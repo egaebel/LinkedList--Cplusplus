@@ -273,13 +273,16 @@ int main () {
     cout << "Preparing to iterate over list2...\n";
 
     int curVal;
+    int * tCurVal;
     ostringstream os;
     os << "{";
     while (it->hasNext()) {
 
-        curVal = it->next();
-        cout << "curVal holds: " << curVal << endl;
-        os << curVal << ", \n";
+        if ((tCurVal = it->next())) {
+            curVal = *tCurVal;
+            cout << "curVal holds: " << curVal << endl;
+            os << curVal << ", \n";
+        }
     }
     os << "}\n";
     cout << "All of the elements iterated over were:\n" << os.str() << endl;
@@ -304,9 +307,11 @@ int main () {
     os << "{";
     for (int i = 0; it->hasNext(); i++) {
 
-        curVal = it->next();
-        cout << "curVal holds: " << curVal << endl;
-        beforeList[i] = curVal;
+        if ((tCurVal = it->next())) {
+            curVal = *tCurVal;
+            cout << "curVal holds: " << curVal << endl;
+            beforeList[i] = curVal;
+        }
 
         //Remove on odd iterations (just cus)
         if ((i % 2) == 1) {

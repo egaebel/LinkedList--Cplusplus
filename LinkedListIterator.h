@@ -25,11 +25,11 @@ class LinkedListIterator : public Iterator<T> {
         /*
          * Pointer to the node that the iterator is currently at.
          */
-        Node<T>* current;
+        Node<T> * current;
         /*
          * Pointer to the LinkedList being iterated through.
          */
-        LinkedList<T>* list;
+        LinkedList<T> * list;
         /*
          * Boolean value indicating whether next has been called since
          * the last remove operation.
@@ -87,9 +87,9 @@ class LinkedListIterator : public Iterator<T> {
          * @return the value of the element in the next node. Or 0 if
          *          the end of the list has been reached.
          */
-        T next() {
+        T * next() {
 
-            T returnValue = 0;
+            T * returnValue = NULL;
 
             if (current != list->tail) {
 
@@ -105,7 +105,8 @@ class LinkedListIterator : public Iterator<T> {
                 //Otherwise.
                 else {
 
-                    returnValue = current->getData();
+                    T & temp = current->getData();
+                    returnValue = &temp;
                     nextCalled = true;
                 }
             }
@@ -128,12 +129,12 @@ class LinkedListIterator : public Iterator<T> {
          * @param element the element to add to the LinkedList.
          * @return true if the operation succeeded, false otherwise.
          */
-        bool add(T element) {
+        bool add(const T & element) {
 
             //If the iterator is not pointing at the tail node.
             if(current != list->tail) {
 
-                Node<T>* newNode = new Node<T>(element);
+                Node<T> * newNode = new Node<T>(element);
                 current->join(newNode->join(current->split()));
 
                 //Move current to the newly inserted node so that
@@ -162,7 +163,7 @@ class LinkedListIterator : public Iterator<T> {
          */
         bool remove() {
 
-            T value = false;
+            bool value = false;
 
             if (nextCalled) {
 

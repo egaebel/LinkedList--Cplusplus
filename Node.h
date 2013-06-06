@@ -27,11 +27,11 @@ class Node {
         /*
          * The Node that comes before this one.
          */
-        Node<T>* prev;
+        Node<T> * prev;
         /*
          * The Node that comes after this one.
          */
-        Node<T>* next;
+        Node<T> * next;
 
         //Constructors--------------//
         /*
@@ -123,7 +123,7 @@ class Node {
          *
          * @return data stored in this node.
          */
-        T getData() {
+        T & getData() {
 
             return data;
         }
@@ -133,7 +133,7 @@ class Node {
          *
          * @return next, the Node that comes after this one.
          */
-        Node<T>* getNext() {
+        Node<T> * getNext() {
 
             return next;
         }
@@ -143,7 +143,7 @@ class Node {
          *
          * @return prev, the Node that comes before this one.
          */
-        Node<T>* getPrevious() {
+        Node<T> * getPrevious() {
 
             return prev;
         }

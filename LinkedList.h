@@ -27,11 +27,11 @@ class LinkedList {
         /*
          * The head of the list, sentinel node, empty.
          */
-        Node<T>* head;
+        Node<T> * head;
         /*
          * The tail end of the list, sentinel node, empty.
          */
-        Node<T>* tail;
+        Node<T> * tail;
 
         //Constructors---------------//
         /*

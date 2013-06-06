@@ -30,7 +30,7 @@ class Iterator {
          *
          * @return the next element in the iteration.
          */
-        virtual T next() = 0;
+        virtual T * next() = 0;
 
         /*
          * Adds an element to the List being iterated over.
@@ -38,7 +38,7 @@ class Iterator {
          * @param element the element to add.
          * @return true if successful, false otherwise.
          */
-        virtual bool add(T element) = 0;
+        virtual bool add(const T & element) = 0;
 
         /*
          * Removes the element last returned by next from
