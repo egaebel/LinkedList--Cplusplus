@@ -1,6 +1,7 @@
 
 #include "LinkedList.h"
 #include <iostream>
+#include <cassert>
 
 /*
  * Test harness for LinkedList. Tests all functions, and has
@@ -95,21 +96,19 @@ int main () {
     cout << "list holds: " << list.toString() << endl;
 
     cout << "Removing index 5 from the list\n";
-    int result = list.removeIndex(5);
+    int result = *list.removeIndex(5);
     cout << "Size is: " << list.getSize() << endl;
     cout << "Index 5 held: " << result << endl;
     cout << "list holds: " << list.toString() << endl;
 
     cout << "Removing index 1382 from the list (will fail)\n";
-    result = list.removeIndex(1382);
+    assert(list.removeIndex(1382) == NULL);
     cout << "Size is: " << list.getSize() << endl;
-    cout << "Index 5 held: " << result << endl;
     cout << "list holds: " << list.toString() << endl;
 
     cout << "Removing index -1 from the list (will fail)\n";
-    result = list.removeIndex(-1);
+    assert(list.removeIndex(-1) == NULL);
     cout << "Size is: " << list.getSize() << endl;
-    cout << "Index 5 held: " << result << endl;
     cout << "list holds: " << list.toString() << endl;
 
     cout << "Removing index 5 from the list, using removeIndexBoolReturn\n";

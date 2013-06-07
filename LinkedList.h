@@ -55,7 +55,7 @@ class LinkedList {
          *
          * @param element the first data element in the list.
          */
-        LinkedList (T element) {
+        LinkedList (const T & element) {
 
             head = new Node<T>();
             tail = new Node<T>();
@@ -75,7 +75,7 @@ class LinkedList {
          *
          * @param element the element to add.
          */
-        void addFront(T element) {
+        void addFront(const T & element) {
 
             Node<T>* temp = head->next;
             Node<T>* newNode = new Node<T>(element);
@@ -93,7 +93,7 @@ class LinkedList {
          *
          * @param element the element to add.
          */
-        void addEnd(T element) {
+        void addEnd(const T & element) {
 
             Node<T>* temp = tail->prev;
             Node<T>* newNode = new Node<T>(element);
@@ -117,7 +117,7 @@ class LinkedList {
          * @param index The index of the element to remove.
          * @return the removed data element, or 0 if index was invalid.
          */
-        T removeIndex(int index) {
+        const T * removeIndex(int index) {
 
             if (index < size && index >= 0) {
 
@@ -130,7 +130,7 @@ class LinkedList {
                     if (i == index) {
 
                         Node<T>* removedNode = temp;
-                        T removedData = removedNode->getData();
+                        T * removedData = &removedNode->getData();
 
                         temp = temp->prev;
                         temp->join(temp->split()->split());
@@ -198,7 +198,7 @@ class LinkedList {
          * @param element the element to remove.
          * @return true if the element was removed, false otherwise.
          */
-        bool removeElement(T element) {
+        bool removeElement(const T & element) {
 
             //Loop through list until element is found,
                 //or tail is reached.
@@ -233,14 +233,12 @@ class LinkedList {
          * Takes in an element, and removes all instances of it from the list.
          * Returns true if at least one element was found, false otherwise.
          *
-         * Runs in O(n) time in the worst case,
-         * O(1) time in the best case, and
-         * O(n/2) in the average case.
+         * Runs in O(n) time
          *
          * @param element the element to remove instances of.
          * @return true if at least one element was found, false otherwise.
          */
-        bool removeAllElements(T element) {
+        bool removeAllElements(const T & element) {
 
             bool value = false;
 
@@ -428,9 +426,9 @@ class LinkedList {
          *
          * @return iterator that iterates over this LinkedList.
          */
-        Iterator<T>* getIterator() {
+        Iterator<T> * getIterator() {
 
-            Iterator<T>* it = new LinkedListIterator<T>(this);
+            Iterator<T> * it = new LinkedListIterator<T>(this);
             return it;
         }
 };
